@@ -1,10 +1,31 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Ionicons from '@react-native-vector-icons/ionicons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+const Icon = ({ label, focus }: { label: string; focus: boolean }) => {
+  switch (label) {
+    case 'Home':
+      return (
+        focus ? <Ionicons name="home" size={24} color='#00512C' /> : <Ionicons name="home-outline" size={24} color='#00512C' />
+      );
+    case 'Favorite':
+      return (
+        focus ? <Ionicons name="heart" size={24} color='#00512C' /> : <Ionicons name="heart-outline" size={24} color='#00512C' />
+      );
+    case 'Cart':
+      return (
+        focus ? <Ionicons name="cart" size={24} color='#00512C' /> : <Ionicons name="cart-outline" size={24} color='#00512C' />
+      );
+    case 'Profile':
+      return (
+        focus ? <Ionicons name="person" size={24} color='#00512C' /> : <Ionicons name="person-outline" size={24} color='#00512C' />
+      );
+  }
+};
 
 const ButtonTabs = ({ state, descriptors, navigation }: any) => {
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{ flexDirection: 'row', backgroundColor: 'white', paddingVertical: 30, paddingBottom: 30, paddingHorizontal: 50, justifyContent: 'space-between' }}>
       {state.routes.map((route: any, index: number) => {
         const { options } = descriptors[route.key];
         const label =
@@ -44,12 +65,9 @@ const ButtonTabs = ({ state, descriptors, navigation }: any) => {
             testID={options.tabBarTestID}
             onPress={onPress}
             onLongPress={onLongPress}
-            style={{ flex: 1 }}
           >
-            <Ionicons name="home-outline" size={24} color="#000000" />
-            <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
-              {label}
-            </Text>
+            <Icon label={label} focus={isFocused} />
+            
           </TouchableOpacity>
         );
       })}
