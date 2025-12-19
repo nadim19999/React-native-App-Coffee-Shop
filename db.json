@@ -1,0 +1,58 @@
+{
+  "categories": [
+    { "id": 1, "name": "Cappuccino", "icon": "cafe" },
+    { "id": 2, "name": "Latte", "icon": "cafe" },
+    { "id": 3, "name": "Espresso", "icon": "cafe" },
+    { "id": 4, "name": "Mocha", "icon": "ice-cream" },
+    { "id": 5, "name": "Waffle", "icon": "restaurant" },
+    { "id": 6, "name": "Soda", "icon": "beer" }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "Cappuccino",
+      "price": 12.000,
+      "categoryId": 1,
+      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152326/Mask_Group_aiwuse.png"
+    },
+    {
+      "id": 2,
+      "name": "Latte",
+      "price": 12.000,
+      "categoryId": 2,
+      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152326/Mask_Group_2_wcb1t1.png"
+    },
+    {
+      "id": 3,
+      "name": "Espresso",
+      "price": 12.000,
+      "categoryId": 3,
+      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152188/product_k5kirh.png"
+    },
+    {
+      "id": 4,
+      "name": "Moka",
+      "price": 12.000,
+      "categoryId": 4,
+      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152326/Mask_Group_1_gg3azn.png"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "password123",
+      "location": "New York",
+      "favorite": [1, 3]
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "password": "password456",
+      "location": "Los Angeles",
+      "favorite": [1, 4]
+    }
+  ]
+}
