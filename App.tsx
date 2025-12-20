@@ -13,12 +13,9 @@ export default function App() {
     <SafeAreaProvider>
       <UserProvider>
         <CartProvider>
-          <SafeAreaView style={{ flex: 1, backgroundColor: colorScheme === 'dark' ? '#000' : '#fff' }}>
-            <StatusBar
-              barStyle={colorScheme === 'dark' ? 'light-content' : 'dark-content'}
-              backgroundColor={colorScheme === 'dark' ? '#000' : '#fff'}
-            />
-            <NavigationContainer theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <SafeAreaView style={{ flex: 1, backgroundColor: colorScheme === 'dark' ? '#ffffffff' : '#fff' }}>
+            
+            <NavigationContainer theme={colorScheme === 'dark' ? DefaultTheme : DefaultTheme}>
               <Router />
             </NavigationContainer>
           </SafeAreaView>

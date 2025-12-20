@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {
   StyleSheet,
   Image,
@@ -10,24 +10,19 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SplashScreen = ({ navigation }: any) => {
+  const handleGetStarted = async () => {
+    try {
+      const user = await AsyncStorage.getItem('user');
 
-  useEffect(() => {
-    const checkUser = async () => {
-      try {
-        const user = await AsyncStorage.getItem('user');
-
-        if (user) {
-          navigation.replace('TabNavigator');
-        } else {
-          navigation.replace('Login');
-        }
-      } catch (error) {
-        console.log('Error checking user:', error);
+      if (user) {
+        navigation.replace('TabNavigator'); // utilisateur déjà connecté
+      } else {
+        navigation.replace('Login'); // utilisateur non connecté
       }
-    };
-
-    checkUser();
-  }, []);
+    } catch (error) {
+      console.log('Error checking user:', error);
+    }
+  };
 
   return (
     <View style={{ flex: 1 }}>
@@ -76,6 +71,7 @@ const SplashScreen = ({ navigation }: any) => {
             marginHorizontal: 60,
             marginTop: 40,
           }}
+          onPress={handleGetStarted}
         >
           <Text style={{ fontSize: 16, fontWeight: '600', color: 'white' }}>
             Get Started

@@ -161,8 +161,8 @@
       "id": 5,
       "name": "Emma Brown",
       "image": "https://res.cloudinary.com/demo/image/upload/v1589876543/user5.png",
-      "email": "emma.brown@example.com",
-      "password": "emma123",
+      "email": "admin",
+      "password": "admin",
       "location": "Miami",
       "favorite": [12, 13, 14, 15, 16, 17, 18]
     }
