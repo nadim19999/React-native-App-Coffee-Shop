@@ -135,8 +135,8 @@
       "id": 2,
       "name": "Jane Smith",
       "image": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766180181/117334342_2692606791007431_3263807642090291192_n-removebg-preview_jwnabp.png",
-      "email": "jane.smith@example.com",
-      "password": "password456",
+      "email": "test",
+      "password": "test",
       "location": "Los Angeles",
       "favorite": [2, 4, 6, 8, 10]
     },
@@ -159,8 +159,8 @@
     },
     {
       "id": 5,
-      "name": "Emma Brown",
-      "image": "https://res.cloudinary.com/demo/image/upload/v1589876543/user5.png",
+      "name": "Nadim Boussarsar",
+      "image": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766180181/117334342_2692606791007431_3263807642090291192_n-removebg-preview_jwnabp.png",
       "email": "admin",
       "password": "admin",
       "location": "Miami",
