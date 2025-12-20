@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Cart, Favorite, Home, Profile, SplashScreen } from '../pages';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { ButtonTabs } from '../components/molecules';
+import Login from '../pages/Login';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ const Router = () => {
     <Stack.Navigator screenOptions={() => ({ headerShown: false })}>
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
       <Stack.Screen name="Home" component={Home} />
+      <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="TabNavigator" component={TabNavigator} />
     </Stack.Navigator>
   );

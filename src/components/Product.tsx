@@ -1,11 +1,20 @@
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import React from 'react';
+import React, { useContext } from 'react';
 import { Text, TouchableOpacity, View, Image } from 'react-native';
+import { UserContext } from '../context/UserContext';
+import { CartContext } from '../context/CartContext';
 
-const Product = ({ name, price, path }: { name: string; price: number; path: string }) => {
+const Product = ({ id, name, newPrice, path, sizes = [], isFavorite, onToggleFavorite }: any) => {
+  const { toggleFavorite } = useContext(UserContext);
+  const { addToCart } = useContext(CartContext);
+
+  const handleAdd = () => {
+    addToCart({ id, name, newPrice, image: path, sizes });
+  };
+
   return (
     <View>
-      <View
+      <TouchableOpacity activeOpacity={0.7}
         style={{
           backgroundColor: 'white',
           paddingHorizontal: 10,
@@ -22,19 +31,37 @@ const Product = ({ name, price, path }: { name: string; price: number; path: str
           style={{ width: '100%', height: 80, borderRadius: 10 }}
           resizeMode="cover"
         />
-        <Text style={{ fontSize: 16, fontWeight: 'bold', marginTop: 5 }}>{name}</Text>
+        <View
+          style={{
+            flexDirection: 'row',
+            marginTop: 5,
+            justifyContent: 'space-between',
+            alignItems: 'center',
+          }}
+        >
+          <Text style={{ fontSize: 16, fontWeight: 'bold', marginTop: 5 }}>
+            {name.length > 10 ? name.substring(0, 10) + '…' : name}
+          </Text>
+
+          {/* Cœur cliquable */}
+          <TouchableOpacity onPress={() => toggleFavorite(id)}>
+            <Ionicons name={isFavorite ? 'heart' : 'heart-outline'} size={20} color="red" />
+          </TouchableOpacity>
+        </View>
         <Text style={{ fontSize: 10, color: '#999999ff' }}>with sugar</Text>
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',
           }}
         >
-          <View style={{ flex: 1 }} >
-            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{price} DT</Text>
+          <View style={{ flex: 1 }}>
+            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{newPrice} DT</Text>
           </View>
-          <TouchableOpacity activeOpacity={0.7}
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={handleAdd}
             style={{
               backgroundColor: '#00512C',
               borderRadius: 15,
@@ -44,7 +71,7 @@ const Product = ({ name, price, path }: { name: string; price: number; path: str
             <Ionicons name="add" size={20} color="white" />
           </TouchableOpacity>
         </View>
-      </View>
+      </TouchableOpacity>
     </View>
   );
 };

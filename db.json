@@ -11,48 +11,160 @@
     {
       "id": 1,
       "name": "Cappuccino",
-      "price": 12.000,
       "categoryId": 1,
-      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152326/Mask_Group_aiwuse.png"
+      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152326/Mask_Group_aiwuse.png",
+      "sizes": [
+        { "label": "Small", "newPrice": 6.5, "oldPrice": 7.5 },
+        { "label": "Medium", "newPrice": 7.5, "oldPrice": 8.5 },
+        { "label": "Large", "newPrice": 9.0, "oldPrice": 10.0 }
+      ],
+      "sugarLevels": ["No Sugar", "Low", "Medium", "High"]
     },
     {
       "id": 2,
       "name": "Latte",
-      "price": 12.000,
       "categoryId": 2,
-      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152326/Mask_Group_2_wcb1t1.png"
+      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152326/Mask_Group_2_wcb1t1.png",
+      "sizes": [
+        { "label": "Small", "newPrice": 7.0, "oldPrice": 8.0 },
+        { "label": "Medium", "newPrice": 8.0, "oldPrice": 9.0 },
+        { "label": "Large", "newPrice": 9.5, "oldPrice": 10.5 }
+      ],
+      "sugarLevels": ["No Sugar", "Low", "Medium", "High"]
     },
     {
       "id": 3,
       "name": "Espresso",
-      "price": 12.000,
       "categoryId": 3,
-      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152188/product_k5kirh.png"
+      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152188/product_k5kirh.png",
+      "sizes": [
+        { "label": "Standard", "newPrice": 5.0, "oldPrice": 6.0 }
+      ],
+      "sugarLevels": ["No Sugar", "Low"]
     },
     {
       "id": 4,
       "name": "Moka",
-      "price": 12.000,
       "categoryId": 4,
-      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152326/Mask_Group_1_gg3azn.png"
+      "path": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766152326/Mask_Group_1_gg3azn.png",
+      "sizes": [
+        { "label": "Small", "newPrice": 7.5, "oldPrice": 8.5 },
+        { "label": "Medium", "newPrice": 8.5, "oldPrice": 9.5 },
+        { "label": "Large", "newPrice": 10.0, "oldPrice": 11.0 }
+      ],
+      "sugarLevels": ["No Sugar", "Low", "Medium", "High"]
+    },
+    {
+      "id": 5,
+      "name": "Waffle Classic",
+      "categoryId": 5,
+      "path": "https://res.cloudinary.com/demo/image/upload/v1589876543/waffle1.png",
+      "sizes": [
+        { "label": "Standard", "newPrice": 8.0, "oldPrice": 9.0 }
+      ],
+      "sugarLevels": ["Standard"]
+    },
+    {
+      "id": 6,
+      "name": "Chocolate Waffle",
+      "categoryId": 5,
+      "path": "https://res.cloudinary.com/demo/image/upload/v1589876543/waffle2.png",
+      "sizes": [
+        { "label": "Standard", "newPrice": 9.0, "oldPrice": 10.0 }
+      ],
+      "sugarLevels": ["Standard"]
+    },
+    {
+      "id": 7,
+      "name": "Strawberry Waffle",
+      "categoryId": 5,
+      "path": "https://res.cloudinary.com/demo/image/upload/v1589876543/waffle3.png",
+      "sizes": [
+        { "label": "Standard", "newPrice": 9.5, "oldPrice": 10.5 }
+      ],
+      "sugarLevels": ["Standard"]
+    },
+    {
+      "id": 8,
+      "name": "Soda Cola",
+      "categoryId": 6,
+      "path": "https://res.cloudinary.com/demo/image/upload/v1589876543/soda1.png",
+      "sizes": [
+        { "label": "0.25 L", "newPrice": 2.5, "oldPrice": 3.0 },
+        { "label": "0.33 L", "newPrice": 3.5, "oldPrice": 4.0 },
+        { "label": "0.5 L", "newPrice": 4.5, "oldPrice": 5.0 }
+      ],
+      "sugarLevels": ["Standard"]
+    },
+    {
+      "id": 9,
+      "name": "Orange Soda",
+      "categoryId": 6,
+      "path": "https://res.cloudinary.com/demo/image/upload/v1589876543/soda2.png",
+      "sizes": [
+        { "label": "0.25 L", "newPrice": 2.8, "oldPrice": 3.3 },
+        { "label": "0.33 L", "newPrice": 3.8, "oldPrice": 4.3 },
+        { "label": "0.5 L", "newPrice": 4.8, "oldPrice": 5.3 }
+      ],
+      "sugarLevels": ["Standard"]
+    },
+    {
+      "id": 10,
+      "name": "Lemon Soda",
+      "categoryId": 6,
+      "path": "https://res.cloudinary.com/demo/image/upload/v1589876543/soda3.png",
+      "sizes": [
+        { "label": "0.25 L", "newPrice": 2.6, "oldPrice": 3.1 },
+        { "label": "0.33 L", "newPrice": 3.6, "oldPrice": 4.1 },
+        { "label": "0.5 L", "newPrice": 4.6, "oldPrice": 5.1 }
+      ],
+      "sugarLevels": ["Standard"]
     }
   ],
   "users": [
     {
       "id": 1,
       "name": "John Doe",
+      "image": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766180181/117334342_2692606791007431_3263807642090291192_n-removebg-preview_jwnabp.png",
       "email": "john.doe@example.com",
       "password": "password123",
       "location": "New York",
-      "favorite": [1, 3]
+      "favorite": [1, 3, 5, 7]
     },
     {
       "id": 2,
       "name": "Jane Smith",
+      "image": "https://res.cloudinary.com/dot4id1yf/image/upload/v1766180181/117334342_2692606791007431_3263807642090291192_n-removebg-preview_jwnabp.png",
       "email": "jane.smith@example.com",
       "password": "password456",
       "location": "Los Angeles",
-      "favorite": [1, 4]
+      "favorite": [2, 4, 6, 8, 10]
+    },
+    {
+      "id": 3,
+      "name": "Alice Johnson",
+      "image": "https://res.cloudinary.com/demo/image/upload/v1589876543/user3.png",
+      "email": "alice.johnson@example.com",
+      "password": "alice123",
+      "location": "Chicago",
+      "favorite": [1, 2, 3, 4, 5]
+    },
+    {
+      "id": 4,
+      "name": "Bob Williams",
+      "image": "https://res.cloudinary.com/demo/image/upload/v1589876543/user4.png",
+      "email": "bob123",
+      "location": "Houston",
+      "favorite": [6, 7, 8, 9, 10, 11]
+    },
+    {
+      "id": 5,
+      "name": "Emma Brown",
+      "image": "https://res.cloudinary.com/demo/image/upload/v1589876543/user5.png",
+      "email": "emma.brown@example.com",
+      "password": "emma123",
+      "location": "Miami",
+      "favorite": [12, 13, 14, 15, 16, 17, 18]
     }
   ]
 }

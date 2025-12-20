@@ -25,7 +25,7 @@ const Icon = ({ label, focus }: { label: string; focus: boolean }) => {
 
 const ButtonTabs = ({ state, descriptors, navigation }: any) => {
   return (
-    <View style={{ flexDirection: 'row', backgroundColor: 'white', paddingVertical: 30, paddingBottom: 30, paddingHorizontal: 50, justifyContent: 'space-between' }}>
+    <View style={{ flexDirection: 'row', backgroundColor: 'white', paddingTop: 20, paddingHorizontal: 50, justifyContent: 'space-between' }}>
       {state.routes.map((route: any, index: number) => {
         const { options } = descriptors[route.key];
         const label =

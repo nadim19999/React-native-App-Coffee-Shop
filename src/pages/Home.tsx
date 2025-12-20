@@ -1,42 +1,48 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Image, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Category from '../components/Category';
 import Product from '../components/Product';
 import SpecialProduct from '../components/SpecialProduct';
+import { getUser } from '../services/auth';
+import { UserContext } from '../context/UserContext';
 
 const Home = () => {
-  const photoprofile = require('../assets/images/photoprofile.png');
-  const location = "Jakarta, Indonesia";
-  const name = "Yudi";
+  const { user, setUser, toggleFavorite } = useContext(UserContext);
 
-  type CategoryType = { id: number; name: string, icon: string };
-  const [categories, setCategories] = useState<CategoryType[]>([]);
+  const [categories, setCategories] = useState<{ id: number; name: string; icon: string }[]>([]);
   const [selectedCategoryId, setSelectedCategoryId] = useState<number | null>(null);
+  const [products, setProducts] = useState<{ id: number; name: string; sizes: any[]; categoryId: number; path: string; special: boolean }[]>([]);
 
-  type ProductType = { id: number; name: string, price: number, path: string, isFavorite: boolean };
-  const [products, setProducts] = useState<ProductType[]>([]);
+  useEffect(() => {
+    const fetchUser = async () => {
+      const fetchedUser = await getUser();
+      setUser(fetchedUser);
+    };
+    fetchUser();
+  }, []);
 
   useEffect(() => {
     fetch('http://10.0.2.2:3000/categories')
-      .then(response => response.json())
+      .then(res => res.json())
       .then(data => setCategories(data))
-      .catch(error => console.log(error));
+      .catch(console.log);
+
     fetch('http://10.0.2.2:3000/products')
-      .then(response => response.json())
+      .then(res => res.json())
       .then(data => setProducts(data))
-      .catch(error => console.log(error));
+      .catch(console.log);
   }, []);
 
   return (
-    <ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 20 }}>
+    <ScrollView style={{ flex: 1 }}>
       {/* Header */}
-      <View style={{ flexDirection: 'row', marginTop: 50, marginHorizontal: 20, justifyContent: 'space-between', alignItems: 'center' }}>
+      <View style={{ flexDirection: 'row', marginHorizontal: 20, justifyContent: 'space-between', alignItems: 'center' }}>
         <TouchableOpacity activeOpacity={0.7}>
-          <Image source={photoprofile} />
+          <Image source={{ uri: user.image }} style={{ width: 40, height: 40, borderRadius: 20, resizeMode: 'cover' }} />
         </TouchableOpacity>
         <TouchableOpacity activeOpacity={0.7} style={{ flexDirection: 'row', alignItems: 'center', gap: 5 }}>
           <Image source={require('../assets/icons/location.png')} />
-          <Text>{location}</Text>
+          <Text>{user.location}</Text>
         </TouchableOpacity>
         <TouchableOpacity activeOpacity={0.7}>
           <Image source={require('../assets/icons/notification.png')} />
@@ -45,7 +51,7 @@ const Home = () => {
 
       {/* Greeting */}
       <View style={{ marginTop: 20, marginHorizontal: 20 }}>
-        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Good morning, {name}</Text>
+        <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Good morning, {user.name}</Text>
       </View>
 
       {/* Search bar */}
@@ -64,6 +70,7 @@ const Home = () => {
         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Categories</Text>
       </View>
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginTop: 20 }} contentContainerStyle={{ paddingHorizontal: 20, gap: 10 }}>
+        <Category name="All" icon="cafe" isFocused={selectedCategoryId === null} onPress={() => setSelectedCategoryId(null)} />
         {categories.map(item => (
           <Category
             key={item.id}
@@ -74,39 +81,44 @@ const Home = () => {
           />
         ))}
       </ScrollView>
+
       {/* Products */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginTop: 20 }} contentContainerStyle={{ paddingHorizontal: 20, gap: 10 }}>
-        {products.map(item => (
-          <Product
-            key={item.id}
-            name={item.name}
-            price={item.price}
-            path={item.path}
-          />
-        ))}
+        {products
+          .filter(item => selectedCategoryId === null || item.categoryId === selectedCategoryId)
+          .map(item => (
+            <Product
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              newPrice={item.sizes[0].newPrice}
+              path={item.path}
+              sizes={item.sizes}
+              isFavorite={user.favorite.includes(item.id)}
+              onToggleFavorite={toggleFavorite}
+            />
+          ))}
       </ScrollView>
+
       {/* Special Offer */}
       <View style={{ marginTop: 20, marginHorizontal: 20 }}>
         <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Special Offer</Text>
       </View>
-      <View
-        style={{
-          marginTop: 20,
-          marginHorizontal: 20,
-          flexDirection: 'row',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
-        }}
-      >
-        {products.map(item => (
-          <SpecialProduct
-            key={item.id}
-            name={item.name}
-            price={item.price}
-            path={item.path}
-            isFavorite={item.isFavorite}
-          />
-        ))}
+      <View style={{ marginTop: 20, marginHorizontal: 20, flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+        {products
+          .filter(item => item.sizes[0].oldPrice > item.sizes[0].newPrice && (selectedCategoryId === null || item.categoryId === selectedCategoryId))
+          .map(item => (
+            <SpecialProduct
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              oldPrice={item.sizes[0].oldPrice}
+              newPrice={item.sizes[0].newPrice}
+              path={item.path}
+              isFavorite={user.favorite.includes(item.id)}
+              onToggleFavorite={toggleFavorite}
+            />
+          ))}
       </View>
     </ScrollView>
   );
